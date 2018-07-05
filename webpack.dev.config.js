@@ -26,12 +26,16 @@ module.exports = {
 				loader: "babel-loader"
 			},
 			{
-				test: /\.jsx?$/,
+				test: /\.jsx$/,
 				exclude: /node_modules/,
 				loader: "babel-loader"
 			}
 		]
 	},
+
+	resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 
 	plugins: [
 		new HtmlWebpackPlugin({
