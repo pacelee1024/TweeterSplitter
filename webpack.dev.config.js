@@ -1,29 +1,23 @@
 const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-	template: './src/index.html',
-	filename: 'index.html',
-	inject: 'body'
-})
 
 module.exports = {
-	mode: 'development',
 	entry: './src/index.js',
 	
 	output: {
-		path: path.resolve('dist'),
+		path: path.join(__dirname, '/public'),
 		filename: 'bundle.js'
 	},
 
 	module: {
 		rules: [
 			{ 
-				test: /\.css$/,
+				test: /\.scss$/,
 				exclude: /node_modules/,
 				use: [
-					{ loader: "style-loader" },
-					{ loader: "css-loader" }
+					'style-loader',
+					'css-loader', 
+					'sass-loader'
 				]
 			},
 			{
@@ -39,5 +33,11 @@ module.exports = {
 		]
 	},
 
-	plugins: [HtmlWebpackPluginConfig]
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: "public/index.html",
+			filename: "index.html",
+			inject: false
+		})
+	]
 }

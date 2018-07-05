@@ -1,12 +1,5 @@
-# Logs
-logs
-*.log
-
 # Dependency directory
 node_modules
 
-# Ignore generated javacript
-bundle.*
-
-# ignore site.css
-public/styles/site.css
+public/bundle.js
+public/style.css
