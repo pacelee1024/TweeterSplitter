@@ -3,11 +3,14 @@ Simple react app to split the long messages posted from users.
 
 # Tools
 webpack
+
 webpack-dev-server
+
 scss
 
 # Development
 To run: `npm run start:dev`, then go to localhost:8080
+
 To test: `npm test`
 
 # Usage
