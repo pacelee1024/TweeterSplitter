@@ -7,7 +7,7 @@ const PostItem = ({message}) => {
       <Message.Header>User</Message.Header>
       <p className="message-context">{message}</p>
     </Message>
-  )
-}
+  );
+};
 
 export default PostItem;

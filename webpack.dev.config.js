@@ -21,14 +21,17 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: "babel-loader"
 			},
 			{
-				test: /\.jsx$/,
+				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: "babel-loader"
+				use: [
+					'babel-loader', 
+					'eslint-loader'
+				]
 			}
 		]
 	},
@@ -44,4 +47,4 @@ module.exports = {
 			inject: false
 		})
 	]
-}
+};

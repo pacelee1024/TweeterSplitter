@@ -2,7 +2,7 @@ const MAX_LINE = 50;
 
 const getPrefixLength = (current, total) => {
   return `${current}/${total} `.length;
-}
+};
 
 export const messageSplitter = (postStr) => {
   let resultArray = [];
@@ -45,9 +45,9 @@ export const messageSplitter = (postStr) => {
       hasError = true;
     }
     return newLine;
-  })
+  });
   if (hasError) {
     resultArray = [];
   }
   return resultArray;
-}
+};

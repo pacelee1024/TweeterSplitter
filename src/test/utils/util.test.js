@@ -1,4 +1,4 @@
-import {messageSplitter} from '../../utils/util.js'
+import {messageSplitter} from '../../utils/util.js';
 
 describe('GIVEN messageSplitter function', () => {
   describe('WHEN supplied with a text string (non-empty) that is less than 50 characters', () => {
@@ -14,7 +14,10 @@ describe('GIVEN messageSplitter function', () => {
 
   describe('WHEN supplied with a text string that is longer than 50 characters', () => {
     const longTextString1 = "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself.";
-    const longTextString2 = "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep No more; and by a sleep, to say we end the heart-ache, and the thousand natural shocks that Flesh is heir to?"
+    const longTextString2 = `To be, or not to be, that is the question: 
+      Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, 
+      Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep No more; 
+      and by a sleep, to say we end the heart-ache, and the thousand natural shocks that Flesh is heir to?`;
     const textArray1 = messageSplitter(longTextString1);
     const textArray2 = messageSplitter(longTextString2);
 
@@ -49,4 +52,4 @@ describe('GIVEN messageSplitter function', () => {
       expect(messageSplitter(illegalTextString2).length).toBe(0);
     });
   });
-})
+});
