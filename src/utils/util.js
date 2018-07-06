@@ -4,14 +4,14 @@ const getPrefixLength = (current, total) => {
   return `${current}/${total} `.length;
 }
 
-export const messageSplitter = (str) => {
-  let finalResult = [];
-  if (str.length <= MAX_LINE) {
-    finalResult.push(str);
-    return finalResult;
+export const messageSplitter = (postStr) => {
+  let resultArray = [];
+  if (postStr.length <= MAX_LINE) {
+    resultArray.push(postStr);
+    return resultArray;
   }
 
-  let words = str.split(' ');
+  let words = postStr.split(' ');
   let total = words.length;
   let numSplits = total;
   while (true) {
@@ -32,22 +32,22 @@ export const messageSplitter = (str) => {
       result.push(currentLine);
     }
     if (result.length === numSplits) {
-      finalResult = result;
+      resultArray = result;
       break;
     } else {
       numSplits = result.length;
     }
   }
   let hasError = false;
-  finalResult = finalResult.map((line, index) => {
-    const newLine = `${index + 1}/${finalResult.length} ${line}`;
+  resultArray = resultArray.map((line, index) => {
+    const newLine = `${index + 1}/${resultArray.length} ${line}`;
     if (newLine.length > MAX_LINE) {
       hasError = true;
     }
     return newLine;
   })
   if (hasError) {
-    finalResult = [];
+    resultArray = [];
   }
-  return finalResult;
+  return resultArray;
 }
