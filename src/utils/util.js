@@ -1,55 +1,53 @@
 const MAX_LINE = 50;
 
-const errorMessage = ['Error: The text you entered has text that is too long, please break it into shorter words.'];
-
 const getPrefixLength = (current, total) => {
   return `${current}/${total} `.length;
 }
 
 export const messageSplitter = (str) => {
-  let finalResult = []
+  let finalResult = [];
   if (str.length <= MAX_LINE) {
     finalResult.push(str);
     return finalResult;
   }
 
-  let words = str.split(' ')
-  let total = words.length
-  let numSplits = total
+  let words = str.split(' ');
+  let total = words.length;
+  let numSplits = total;
   while (true) {
-    let pointer = 0
-    let result = []
-    let currentLine = ''
-    let counter = 0
+    let pointer = 0;
+    let result = [];
+    let currentLine = '';
+    let counter = 0;
     while (pointer < total) {
       if (getPrefixLength(counter, numSplits) + currentLine.length + words[pointer].length < MAX_LINE) {
-        currentLine += ` ${words[pointer]}`
+        currentLine += ` ${words[pointer]}`;
       } else {
-        result.push(currentLine)
-        currentLine = words[pointer]
+        result.push(currentLine);
+        currentLine = words[pointer];
       }
-      pointer ++
+      pointer++;
     }
     if (currentLine) {
-      result.push(currentLine)
+      result.push(currentLine);
     }
     if (result.length === numSplits) {
-      finalResult = result
-      break
+      finalResult = result;
+      break;
     } else {
-      numSplits = result.length
+      numSplits = result.length;
     }
   }
-  let hasError = false
+  let hasError = false;
   finalResult = finalResult.map((line, index) => {
-    const newLine = `${index + 1}/${finalResult.length} ${line}`
+    const newLine = `${index + 1}/${finalResult.length} ${line}`;
     if (newLine.length > MAX_LINE) {
-      hasError = true
+      hasError = true;
     }
-    return newLine
+    return newLine;
   })
-  if (!hasError) {
-    return finalResult
+  if (hasError) {
+    finalResult = [];
   }
-  return errorMessage;
+  return finalResult;
 }

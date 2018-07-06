@@ -13,6 +13,13 @@ const postRows = (postList) => {
 
 const PostBoard = ({post}) => {
   const results = messageSplitter(post);
+  if (!results.length) {
+    return (
+      <div className="error-message">
+        Error: The text you entered has text that is too long, please break it into shorter words.
+      </div>
+    )
+  }
   const rows = postRows(results);
   return (
     <div className="post-board">{rows}</div>

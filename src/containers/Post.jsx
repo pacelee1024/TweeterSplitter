@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, TextArea } from 'semantic-ui-react';
+import { Form, TextArea, Button } from 'semantic-ui-react';
 import PostBoard from './PostBoard';
 
 class Post extends Component {
@@ -25,6 +25,7 @@ class Post extends Component {
 
   render() {
     const {formSubmitted, textInput} = this.state;
+    const disabled = !textInput.trim().length ? true : false;
     return (
       <div id="post">
         <Form onSubmit={this.handlePostSubmit} className="post-form">
@@ -36,7 +37,9 @@ class Post extends Component {
             onChange={this.handleChange}
             value={textInput}
             />
-          <Form.Button className="button post-form-submit-button">Post</Form.Button>
+          <Form.Field className="submit">
+            <Button className="post-form-submit-button" disabled={disabled}>Post</Button>
+          </Form.Field>
         </Form>
         {formSubmitted ? <PostBoard post={textInput} /> : null}
       </div>
