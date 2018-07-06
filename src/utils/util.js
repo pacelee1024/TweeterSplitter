@@ -25,6 +25,7 @@ export const messageSplitter = (postStr) => {
       } else {
         result.push(currentLine);
         currentLine = words[pointer];
+        counter++;
       }
       pointer++;
     }
