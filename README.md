@@ -8,7 +8,9 @@ webpack-dev-server
 
 scss
 
-# Development
+# Install
+Dependency: `npm install`
+
 To run: `npm run start:dev`, then go to localhost:8080
 
 To test: `npm test`
